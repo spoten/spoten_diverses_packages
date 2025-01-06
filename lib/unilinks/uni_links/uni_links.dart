@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
+import '../uni_links_platform_interface/uni_links_platform_interface.dart';
 
 /// Returns a [Future], which completes to the initially stored link, which
 /// may be null.
@@ -29,7 +29,7 @@ Stream<String?> get linkStream => UniLinksPlatform.instance.linkStream;
 ///
 /// If the app was stared by a link intent or user activity the stream will
 /// not emit that initial uri - query either the `getInitialUri` instead.
-late final uriLinkStream = linkStream.transform<Uri?>(
+final uriLinkStream = linkStream.transform<Uri?>(
   StreamTransformer<String?, Uri?>.fromHandlers(
     handleData: (String? link, EventSink<Uri?> sink) {
       if (link == null) {
