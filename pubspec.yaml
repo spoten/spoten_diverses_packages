@@ -13,7 +13,7 @@ dependencies:
   dio: ^5.7.0
   uuid: ^4.5.1
   meta: ^1.15.0
-  archive: ^4.0.0
+  archive: ^3.3.8
   cli_script: ^1.0.0
   crypto: ^3.0.6
   equatable: ^2.0.7
