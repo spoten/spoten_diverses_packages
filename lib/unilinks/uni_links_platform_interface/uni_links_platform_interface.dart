@@ -1,5 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:uni_links_platform_interface/src/method_channel_uni_links.dart';
+
+import 'method_channel_uni_links.dart';
 
 /// The interface that implementations of uni_links must implement.
 ///

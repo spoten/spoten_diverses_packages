@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
+
+import 'uni_links_platform_interface.dart';
 
 class MethodChannelUniLinks extends UniLinksPlatform {
   static const MethodChannel _mChannel = MethodChannel('uni_links/messages');
