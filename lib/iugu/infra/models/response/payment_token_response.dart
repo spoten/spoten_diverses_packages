@@ -1,0 +1,121 @@
+import 'dart:convert';
+
+class PaymentTokenResponse {
+  /// Token Criado
+  String id;
+
+  /// Método de Pagamento (atualmente somente credit_card)
+  String method;
+
+  ExtraInfo? extraInfo;
+
+  PaymentTokenResponse({
+    required this.id,
+    required this.method,
+    this.extraInfo,
+  });
+
+  PaymentTokenResponse copyWith({
+    String? id,
+    String? method,
+    ExtraInfo? extraInfo,
+  }) {
+    return PaymentTokenResponse(
+      id: id ?? this.id,
+      method: method ?? this.method,
+      extraInfo: extraInfo ?? this.extraInfo,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'method': method,
+      'extra_info': extraInfo?.toMap(),
+    };
+  }
+
+  factory PaymentTokenResponse.fromMap(Map<String, dynamic> map) {
+    return PaymentTokenResponse(
+        id: map['id'],
+        method: map['method'],
+        extraInfo: ExtraInfo.fromMap(map['extra_info']));
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory PaymentTokenResponse.fromJson(String source) =>
+      PaymentTokenResponse.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'PaymentTokenResponse(id: $id, method: $method)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is PaymentTokenResponse &&
+        other.id == id &&
+        other.method == method;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ method.hashCode;
+}
+
+class ExtraInfo {
+  ExtraInfo({
+    required this.bin,
+    required this.year,
+    required this.month,
+    required this.brand,
+    required this.holderName,
+    required this.displayNumber,
+  });
+
+  final String bin;
+  final int year;
+  final int month;
+  final String brand;
+  final String holderName;
+  final String displayNumber;
+
+  ExtraInfo copyWith({
+    String? bin,
+    int? year,
+    int? month,
+    String? brand,
+    String? holderName,
+    String? displayNumber,
+  }) =>
+      ExtraInfo(
+        bin: bin ?? this.bin,
+        year: year ?? this.year,
+        month: month ?? this.month,
+        brand: brand ?? this.brand,
+        holderName: holderName ?? this.holderName,
+        displayNumber: displayNumber ?? this.displayNumber,
+      );
+
+  factory ExtraInfo.fromJson(String str) => ExtraInfo.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ExtraInfo.fromMap(Map<String, dynamic> json) => ExtraInfo(
+        bin: json["bin"],
+        year: json["year"],
+        month: json["month"],
+        brand: json["brand"],
+        holderName: json["holder_name"],
+        displayNumber: json["display_number"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "bin": bin,
+        "year": year,
+        "month": month,
+        "brand": brand,
+        "holder_name": holderName,
+        "display_number": displayNumber,
+      };
+}
