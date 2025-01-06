@@ -1,7 +1,7 @@
 name: spoten_packages
 description: "A new Flutter package project."
 version: 0.0.1
-homepage: https://github.com/WebEferen/flutter_wallet_card
+homepage: https://github.com/spoten/spoten_diverses_packages
 
 environment:
   sdk: ^3.6.0
